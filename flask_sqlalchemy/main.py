@@ -25,6 +25,14 @@ def add_user(name, semail):
         db.session.commit()
 
 
+def set_users(i):
+    with app.app_context():
+        for x in range(1, i):
+            u = User(username="test" + str(x), email="test email" + str(x))
+            db.session.add(u)
+            db.session.commit()
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -37,7 +45,7 @@ class User(db.Model):
 # первый запуск
 # init_db():
 # add_user - почемуто так
-#add_user("sergey2", "sdf3")
+# add_user("sergey2", "sdf3")
 
 
 def getUser(name):
@@ -45,10 +53,8 @@ def getUser(name):
         u = User.query.filter_by(username=name).first()
         print(u)
 
-getUser("sergey2")
-
-
-
+# getUser("sergey2")
+#set_users(100)
 
 #########################
 #  пакеты лучше ставить черешь env а не pip
