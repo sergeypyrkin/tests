@@ -23,14 +23,18 @@
 <body>
 <div class="jumbotron text-center">
     <h1>My First Bootstrap Page: {{ name }}</h1>
-    <p>Resize this responsive page to see the effect!</p>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
             <h3>Column 1</h3>
-            <p>Lorem ipsum dolor..</p>
+            <p>Наш магазин скоро откроется, оставляйте данные тут: </p>
+            <form action="" method="post">
+                {% csrf_token  %}
+                <div> {{ form.as_p }}</div>
+                <div> <button type="submit" class="btn btn-primary"> отправить</button> </div>
+            </form>
         </div>
         <div class="col-sm-4">
             <h3>Column 2</h3>
